@@ -5,17 +5,16 @@ on:
     branches: 
       - main
 jobs:
+  config:
+    uses: 'cuongnh97/github-actions/.github/workflows/ssh.yml@280e208fff9b615e3c3fbfe1129861b883b99123'
+    with:
+      host: 127.0.0.1
+      username: test
+      ssh_key: "Test luon"
   test_ssh:
     name: Testing run ssh
     runs-on: ubuntu-latest
     steps:
-      - name: TEst
-        uses: 'cuongnh97/github-actions/.github/workflows/ssh.yml@280e208fff9b615e3c3fbfe1129861b883b99123'
-        with:
-          host: 127.0.0.1
-          username: test
-          ssh_key: "Test luon"
-          
       - name: echo ssh key
         run: |
           cat ~/.ssh/staging.key
