@@ -19,3 +19,12 @@ runs:
           echo "${{ inputs.ssh_key }}" > ~/.ssh/staging.key &&
           chmod 600 ~/.ssh/staging.key 
      shell: bash
+   - run:
+          cat >>~/.ssh/config <<END 
+          Host staging
+            HostName ${{ inputs.host }}
+            User ${{ inputs.username }}
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+     shell: bash
