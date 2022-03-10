@@ -16,4 +16,4 @@ jobs:
           ssh_key: "Test luon"
     
       - name: Display result
-        run: cat ~/.ssh/staging.key
+        run: cat ~/.ssh/staging.key && cat ~/.ssh/config
