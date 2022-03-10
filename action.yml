@@ -20,11 +20,11 @@ runs:
           chmod 600 ~/.ssh/staging.key 
      shell: bash
    - run:
-          echo "
-            Host staging
-            HostName ${{ inputs.host }}
-            User ${{ inputs.username }}
-            IdentityFile ~/.ssh/staging.key
+          echo -e "
+            Host staging \n
+            HostName ${{ inputs.host }} \n
+            User ${{ inputs.username }} \n
+            IdentityFile ~/.ssh/staging.key \n
             StrictHostKeyChecking no"
           >> ~/.ssh/config
      shell: bash
