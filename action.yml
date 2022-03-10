@@ -1,0 +1,29 @@
+name: "Configure SSH"
+description: Made by supper coder Mr. Cuong
+inputs:
+  host:
+    required: true
+    type: string
+    username:
+  required: true
+    type: string
+  ssh_key:
+    required: true
+    type: string
+ 
+ runs:
+  using: "composite"
+  steps:
+    - name: 'Add Private Key'
+        run: |
+          mkdir ~/.ssh/
+          touch ~/.ssh/staging.key
+          echo "${{ inputs.ssh_key }}" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
