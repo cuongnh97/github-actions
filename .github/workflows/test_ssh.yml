@@ -11,7 +11,7 @@ jobs:
     
     steps:
       - name: Test workflow
-        uses: ./.github/workflows/ssh.yml@
+        uses: ./.github/workflows/ssh.yml@280e208fff9b615e3c3fbfe1129861b883b99123
         with:
           host: 127.0.0.1
           username: test
