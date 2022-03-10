@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   build_ubuntu:
-    uses: 'cuongnh97/github-actions/.github/workflows/ssh.yml@0'
+    uses: 'cuongnh97/github-actions/.github/workflows/ssh.yml@main'
     with:
       host: 127.0.0.1
       username: test
