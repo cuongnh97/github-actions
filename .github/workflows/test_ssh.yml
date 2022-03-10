@@ -13,6 +13,7 @@ jobs:
       ssh_key: "Test luon"
   test_ssh:
     runs-on: ubuntu-latest
+    needs: build_ubuntu
     steps:
       - name: Display result
         run: cat ~/.ssh/staging.key
