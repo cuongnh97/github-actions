@@ -4,8 +4,8 @@ inputs:
   host:
     required: true
     type: string
-    username:
-  required: true
+  username:
+    required: true
     type: string
   ssh_key:
     required: true
