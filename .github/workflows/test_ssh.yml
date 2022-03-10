@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Test workflow
-        uses: cuongnh97/github-actions/.github/workflows/ssh.yml@280e208fff9b615e3c3fbfe1129861b883b99123
+      - uses: cuongnh97/github-actions/.github/workflows/ssh.yml@280e208fff9b615e3c3fbfe1129861b883b99123
+        name: "test reusable"
         with:
           host: 127.0.0.1
           username: test
