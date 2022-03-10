@@ -13,8 +13,7 @@ inputs:
 runs:
  using: "composite"
  steps:
-   - name: 'Add Private Key'
-     run: |
+   - run: 
           mkdir ~/.ssh/
           touch ~/.ssh/staging.key
           echo "${{ inputs.ssh_key }}" > ~/.ssh/staging.key
@@ -26,3 +25,4 @@ runs:
             IdentityFile ~/.ssh/staging.key
             StrictHostKeyChecking no
           END
+     shell: bash
