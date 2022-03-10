@@ -5,15 +5,15 @@ on:
     branches: 
       - main
 jobs:
-  build_ubuntu:
-    uses: 'cuongnh97/github-actions/.github/workflows/ssh.yml@main'
-    with:
-      host: 127.0.0.1
-      username: test
-      ssh_key: "Test luon"
   test_ssh:
     runs-on: ubuntu-latest
-    needs: build_ubuntu
     steps:
+      - name: Configure SSH
+        uses: 'cuongnh97/github-actions@main'
+        with:
+          host: 127.0.0.1
+          username: test
+          ssh_key: "Test luon"
+    
       - name: Display result
         run: cat ~/.ssh/staging.key
