@@ -10,12 +10,11 @@ inputs:
   ssh_key:
     required: true
     type: string
- 
- runs:
-  using: "composite"
-  steps:
-    - name: 'Add Private Key'
-        run: |
+runs:
+ using: "composite"
+ steps:
+   - name: 'Add Private Key'
+     run: |
           mkdir ~/.ssh/
           touch ~/.ssh/staging.key
           echo "${{ inputs.ssh_key }}" > ~/.ssh/staging.key
