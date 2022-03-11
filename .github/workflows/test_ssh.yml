@@ -8,12 +8,21 @@ jobs:
   test_ssh:
     runs-on: ubuntu-latest
     steps:
-      - name: Configure SSH
-        uses: 'cuongnh97/github-actions@main'
-        with:
-          host: ${{ secrets.PUBLIC_IP_GCE }}
-          username: ${{ secrets.USER_SSH }}
-          ssh_key:  ${{ secrets.SSH_PRIVATE_KEY }}
+#       - name: Configure SSH
+#         uses: 'cuongnh97/github-actions@main'
+#         with:
+#           host: ${{ secrets.PUBLIC_IP_GCE }}
+#           username: ${{ secrets.USER_SSH }}
+#           ssh_key:  ${{ secrets.SSH_PRIVATE_KEY }}
           
+      # Configure Workload Identity Federation and generate an access token.
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          workload_identity_provider: 'projects/14389711859/locations/global/workloadIdentityPools/github-action-pool/providers/github-provider'
+          service_account: 'koteicalendarservice@propane-analogy-183102.iam.gserviceaccount.com'
+      # Connecte too GCE
       - name: Connect to GCE
-        run: ssh staging 'cat ~/test_file.txt'
+        run: |
+          gcloud compute ssh --project=propane-analogy-183102 --zone=us-central1-c ubuntu-instance-sync-cal
