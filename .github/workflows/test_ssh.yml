@@ -31,3 +31,5 @@ jobs:
       - name: Connect to GCE
         run: |
           gcloud compute ssh --project=propane-analogy-183102 --zone=us-central1-c ubuntu-instance-sync-cal
+      - name: Display test.txt
+        run: cat test.txt
