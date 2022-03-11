@@ -14,9 +14,6 @@ jobs:
           host: ${{ secrets.PUBLIC_IP_GCE }}
           username: ${{ secrets.USER_SSH }}
           ssh_key:  ${{ secrets.SSH_PRIVATE_KEY }}
-    
-      - name: Display result
-        run: cat ~/.ssh/staging.key && cat ~/.ssh/config
-        
+          
       - name: Connect to GCE
-        run: ssh staging && ls
+        run: ssh staging 'cat ~/test_file.txt'
